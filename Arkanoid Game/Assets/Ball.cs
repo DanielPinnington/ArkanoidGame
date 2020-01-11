@@ -11,7 +11,8 @@ public class Ball : MonoBehaviour
 
     Vector2 paddleToBallVector;
 
-    // Start is called before the first frame update
+    bool isLaunched = false;
+
     void Start()
     {
         paddleToBallVector = transform.position - paddle1.transform.position;
@@ -20,7 +21,27 @@ public class Ball : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector2 paddlePosition = new Vector2(paddle1.transform.position.x, paddle1.transform.position.y);
-        transform.position = paddlePosition + paddleToBallVector; //Ball Position is the same as Paddle positioning updated every frame
+        if (!isLaunched)
+        {
+            LockBallToPaddle();
+            BallLaunchOnClick();
+        }
     }
+
+
+    private void BallLaunchOnClick()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            GetComponent<Rigidbody2D>().velocity = new Vector2(2f, 10f);
+            isLaunched = true;
+        }
+    }
+
+    private void LockBallToPaddle()
+    {
+        Vector2 paddlePosition = new Vector2(paddle1.transform.position.x, paddle1.transform.position.y);
+        transform.position = paddlePosition + paddleToBallVector;  //Ball Position is the same as Paddle positioning updated every frame
+    }
+
 }
