@@ -7,6 +7,8 @@ public class Paddle : MonoBehaviour
     [SerializeField] float screenWidthInUnits = 16f;
     [SerializeField] float minX = 1f;
     [SerializeField] float maxX = 15f;
+
+
     // Start is called before the first frame update
     void Start()
     {
