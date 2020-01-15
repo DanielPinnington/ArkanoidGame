@@ -6,6 +6,8 @@ public class Ball : MonoBehaviour
 {
 
     [SerializeField] Paddle paddle1; //Type Paddle
+    [SerializeField] float xPush = 2f;
+    [SerializeField] float yPush = 15f;
 
     //State
 
@@ -33,7 +35,7 @@ public class Ball : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            GetComponent<Rigidbody2D>().velocity = new Vector2(2f, 10f);
+            GetComponent<Rigidbody2D>().velocity = new Vector2(xPush, yPush);
             isLaunched = true;
         }
     }
