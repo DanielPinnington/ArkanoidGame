@@ -51,14 +51,10 @@ public class Ball : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (isLaunched)
+        if (isLaunched && collision.collider.tag != "SideCollisions") //If the ball isLaunched AND the collision doesn't equal SideCollision tag (play the sound clip)
         {
             AudioClip clip = ballSounds[UnityEngine.Random.Range(0, ballSounds.Length)];
             myAudioSource.PlayOneShot(clip);
-        }
-        else
-        {
-
         }
     }
 
