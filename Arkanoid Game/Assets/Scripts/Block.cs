@@ -17,7 +17,7 @@ public class Block : MonoBehaviour
     {
         level = FindObjectOfType<Level>(); //Counting the amount of blocks in the scene
         level.CountBreakableBlocks();
-        score = 0;
+      //  score = 0;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -30,7 +30,7 @@ public class Block : MonoBehaviour
 
     private void DestroyBlock()
     {
-        FindObjectOfType<ScoreManager>().addScore();
+        FindObjectOfType<Status>().AddToScore();
         Destroy(gameObject);
     }
 }
